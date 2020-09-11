@@ -14,7 +14,7 @@ sass:
 permalink: /posts/:title/
 texture:
   title: Matt Oestreich
-  tagline: tech. dev. journey.
+  tagline: Technology. Development.
   date_format: "%b %-d, %Y"
   style: black
   showNav: true
