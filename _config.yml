@@ -20,9 +20,9 @@ texture:
   showNav: true
   navigation:
     - title: About Me
-      url: "/my-work"
-    - title: Resume
-      url: "/resume"
+      url: "/about.md"
+    #- title: Resume
+    #  url: "/resume"
   showPicker: false
 
   # generate social links in footer
