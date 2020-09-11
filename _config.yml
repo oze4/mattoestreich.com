@@ -1,5 +1,5 @@
 title: Matt Oestreich
-author: GitHub User
+author: Matt Oestreich
 email: matthewpoestreich@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Matt Oestreich
@@ -16,7 +16,7 @@ texture:
   title: Matt Oestreich
   tagline: Technology. Development.
   date_format: "%b %-d, %Y"
-  style: green
+  style: black
   showNav: true
   showPicker: false
 
