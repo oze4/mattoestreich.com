@@ -16,14 +16,15 @@ texture:
   title: Matt Oestreich
   tagline: Technology. Development.
   date_format: "%b %-d, %Y"
-  #style: black
+  style: green
   showNav: true
-  showPicker: true
+  showPicker: false
 
   # generate social links in footer
   social_links:
     github:  oze4
     linkedIn: in/matt-oestreich-99251862
+    stackoverflow: matty
  
 
 # If you want to link only specific pages in your header, uncomment
