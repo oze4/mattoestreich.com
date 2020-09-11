@@ -8,7 +8,7 @@ categories: golang sdk godaddy godaddygo
 
 I have been learning `Go` for a couple of weeks now, this is what I built while learning the language!
 
-[godaddygo](https://github.com/oze4/godaddygo)
+## [godaddygo](https://github.com/oze4/godaddygo)
 
 ![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/golang.jpg)
 [Credit to /u/dgryski](https://www.reddit.com/r/golang/comments/2ahs7k/gopher_mascot_wallpaper/)
