@@ -1,4 +1,4 @@
-title: Texture Theme
+title: Matt Oestreich
 author: GitHub User
 email: matthewpoestreich@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
@@ -14,7 +14,7 @@ sass:
 permalink: /posts/:title/
 texture:
   title: Matt Oestreich
-  tagline: Technology. Development.
+  tagline: tech. dev. journey.
   date_format: "%b %-d, %Y"
   style: black
   showNav: true
