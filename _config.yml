@@ -1,38 +1,48 @@
-title: Matt Oestreich
-author: Matt Oestreich
-email: matthewpoestreich@gmail.com
+title: Your awesome title
+author: GitHub User
+email: your-email@domain.com
 description: > # this means to ignore newlines until "show_exerpts:"
-  Matt Oestreich
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
 show_excerpts: true # set to true to show excerpts on the homepage
-# baseurl: /texture
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
-
-permalink: /posts/:title/
-texture:
-  title: Matt Oestreich
-  tagline: Technology. Development.
+plainwhite:
+  name: Adam Denisov
+  tagline: Developer. Designer
   date_format: "%b %-d, %Y"
-  style: black
-  showNav: true
-  navigation:
-    - title: Home
-      url: "/"
-    - title: About Me
-      url: "/about"
-    #- title: Resume
-    #  url: "/resume"
-  showPicker: false
+  sitemap: true # set to true to generate sitemap.xml content
+  search: true # set to true to enable searchbar
+  dark_mode: true # set to true to add dark mode toggle
+  portfolio_image: "assets/portfolio.png" # the path from the base directory of the site to the image to display (no / at the start)
+  html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
 
   # generate social links in footer
   social_links:
-    github:  oze4
-    linkedIn: in/matt-oestreich-99251862
-    stackoverflow: matty
- 
+    twitter: samarsault
+    github:  samarsault
+    linkedIn: in/samarsault
+    #rss: rss
+    #dribbble: jekyll
+    #flickr:   jekyll
+    #instagram: jekyll
+    #pinterest: jekyll
+    #youtube: jekyll
+    #facebook: jekyll
+    #soundcloud: jekyll
+    #telegram: jekyll
+    #gitlab: jekyll
+
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
@@ -40,8 +50,8 @@ texture:
 # - about.md
 
 # Build settings
-# theme: texture
+theme: plainwhite
 
 plugins:
   - jekyll-seo-tag
-  #- jekyll-feed
+#  - jekyll-feed
