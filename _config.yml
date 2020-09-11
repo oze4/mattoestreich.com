@@ -20,7 +20,7 @@ texture:
   showNav: true
   navigation:
     - title: About Me
-      url: "/about.md"
+      url: "/about"
     #- title: Resume
     #  url: "/resume"
   showPicker: false
