@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "New website! Check out the old one here"
-date:   2019-01-01 21:03:36 +0530
+date:   3000-01-01
 ---
 
 I recently changed how my personal website is developed.
