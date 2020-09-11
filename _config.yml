@@ -19,6 +19,8 @@ texture:
   style: black
   showNav: true
   navigation:
+    - title: Home
+      url: "/"
     - title: About Me
       url: "/about"
     #- title: Resume
