@@ -25,7 +25,8 @@ namespace stuck in terminating state
 
 ## Wrote a Microservice
 
-![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:30px;"}
+![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:60rem;"}
+
 cronjob in action
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
