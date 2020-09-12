@@ -6,16 +6,16 @@ description: "fixing the root issue, the correct solution"
 categories: kubernetes microservice golang
 ---
 
-<br />
+Solution commonly found online only fixes half of the issue.
+
+![ns-stuck-term](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
+namespace stuck in terminating state
 
 If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
 
 [This](https://medium.com/@craignewtondev/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e) is the article you most likely stumbled upon, which provides an incorrect solution. The solution they provide will leave remnants of those "fixed" namespaces around - just overall not very clean.
 
 Thankfully, I read through the comments and [found the correct solution](https://medium.com/@cristi.posoiu/this-is-not-the-right-way-especially-in-a-production-environment-190ff670bc62).
-
-![ns-stuck-term](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
-namespace stuck in terminating state
 
 ---
 
