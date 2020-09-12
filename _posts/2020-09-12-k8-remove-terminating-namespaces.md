@@ -14,7 +14,7 @@ If you have ever had a namespace stuck in terminating state, you have most likel
 
 Thankfully, I read through the comments and [found the correct solution](https://medium.com/@cristi.posoiu/this-is-not-the-right-way-especially-in-a-production-environment-190ff670bc62).
 
-![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
+![ns-stuck-term](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
 namespace stuck in terminating state
 
 <br />
@@ -25,7 +25,7 @@ namespace stuck in terminating state
 
 ## Wrote a Microservice
 
-![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png)
+![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:30px;"}
 cronjob in action
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
