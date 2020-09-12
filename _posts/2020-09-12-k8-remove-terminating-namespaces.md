@@ -3,7 +3,7 @@ layout: post
 title:  "Kubernetes: Remove Namespaces Stuck in Terminating State"
 date:   2020-09-12
 description: "fixing the root issue, the correct solution"
-categories: golang sdk godaddy godaddygo
+categories: kubernetes microservice golang
 ---
 
 If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
