@@ -11,10 +11,12 @@
   const modalImgCaption = document.getElementById("modal--img--caption");
   const modalImgClose = document.getElementsByClassName("modal-img-close")[0];
   
-  const closeModal = () => () => modalImgBackground.style.display = "none";
+  const closeModal = () => {
+    modalImgBackground.style.display = "none";
+  }
   
-  modalImgClose.onclick = closeModal;
-  modalImgBackground.onclick = closeModal;
+  modalImgClose.onclick = () => closeModal();
+  modalImgBackground.onclick = () => closeModal();
 
   Array.from(allModalImages).forEach(modalImage => {
     modalImage.onclick = () => {
