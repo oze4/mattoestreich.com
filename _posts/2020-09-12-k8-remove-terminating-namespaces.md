@@ -8,8 +8,7 @@ categories: kubernetes microservice golang
 
 Solution commonly found online only fixes half of the issue.
 
-![ns-stuck-term](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
-namespace stuck in terminating state
+<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png" alt="namespace stuck in terminating state">
 
 If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
 
