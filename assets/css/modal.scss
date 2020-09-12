@@ -1,4 +1,4 @@
-.modal-img-preview {
+.modal-image {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
@@ -8,7 +8,7 @@
 
 /* The Modal (background) */
 
-.modal-img {
+.modal-img-background {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
