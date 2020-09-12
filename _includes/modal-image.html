@@ -13,7 +13,7 @@
   Array.from(allModalImages).forEach(modalImage => {
     modalImage.onclick = () => {
       modalImgBackground.style.display = "block";
-      modalImgContent.src = this.src;
+      modalImgContent.src = modalImage.src;
       modalImgCaption.innerHTML = this.alt;
     }
   });
