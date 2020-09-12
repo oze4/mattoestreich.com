@@ -18,7 +18,16 @@ Thankfully, I read through the comments and [found the correct solution](https:/
 
 ![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
 
+<br />
+
+---
+
+<br />
+
 ## Wrote a Microservice
+
+![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png)
+<p>cronjob</p>
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
 
