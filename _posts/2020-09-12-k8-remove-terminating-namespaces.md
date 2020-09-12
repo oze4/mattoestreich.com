@@ -30,7 +30,7 @@ Overall, I'm glad I did this as it helped me begin to see what is "under the hoo
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
 ![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:60rem;"}
-microservice in action
+<br />microservice in action
 
 ### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
 
