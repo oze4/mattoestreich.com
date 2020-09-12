@@ -33,7 +33,7 @@
 
 /* Caption of Modal Image */
 
-#modal-img-caption {
+.modal-img-caption {
   margin: auto;
   display: block;
   width: 80%;
@@ -46,7 +46,7 @@
 
 /* Add Animation */
 
-.modal-img-content, #modal-img-caption {  
+.modal-img-content, .modal-img-caption {  
   -webkit-animation-name: modal-img-zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: modal-img-zoom;
