@@ -6,9 +6,9 @@ description: "fixing the root issue, the correct solution"
 categories: kubernetes microservice golang
 ---
 
-If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
-
 <br />
+
+If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
 
 [This](https://medium.com/@craignewtondev/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e) is the article you most likely stumbled upon, which provides an incorrect solution. The solution they provide will leave remnants of those "fixed" namespaces around - just overall not very clean.
 
@@ -17,17 +17,11 @@ Thankfully, I read through the comments and [found the correct solution](https:/
 ![ns-stuck-term](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
 namespace stuck in terminating state
 
-<br />
-
 ---
 
 <br />
 
 ## Wrote a Microservice
-
-![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:60rem;"}
-
-cronjob in action
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
 
@@ -35,9 +29,10 @@ Overall, I'm glad I did this as it helped me begin to see what is "under the hoo
 
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
-### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
+![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:60rem;"}
+microservice in action
 
-<br />
+### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
 
 ---
 
