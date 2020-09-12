@@ -6,23 +6,33 @@ description: "fixing the root issue, the correct solution"
 categories: golang sdk godaddy godaddygo
 ---
 
+If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
+
 ![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/bandaid.jpg)
 
-If you have ever had a namespace stuck in terminating state, you have most likely Googled this issue...and I bet you found the same article I did. Which, as it turns out, is **wrong**!
+<br />
+
+[This](https://medium.com/@craignewtondev/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e) is the article you most likely stumbled upon, which provides an incorrect solution. The solution they provide will leave remnants of those "fixed" namespaces around - just overall not very clean.
+
+Thankfully, I read through the comments and [found the correct solution](https://medium.com/@cristi.posoiu/this-is-not-the-right-way-especially-in-a-production-environment-190ff670bc62).
 
 ![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term.png)
 
-[This](https://medium.com/@craignewtondev/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e) is the article you most likely stumbled upon. Thankfully, I read through the comments and [found the correct solution](https://medium.com/@cristi.posoiu/this-is-not-the-right-way-especially-in-a-production-environment-190ff670bc62).
-
 ## Wrote a Microservice
 
-Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. Overall, I'm glad I did this as it helped me begin to see what is "under the hood" in Kubernetes, and maybe others can learn from this. Whether learning how to use an in-cluster-client-config with custom service accounts, or learning how to use an out-of-cluster-client-config to write applications that interact with Kubernetes, there is still value in this microservice that half solves your issue. ;)
+Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
+
+Overall, I'm glad I did this as it helped me begin to see what is "under the hood" in Kubernetes, and maybe others can learn from this. Whether learning how to use an in-cluster-client-config with custom service accounts, or learning how to use an out-of-cluster-client-config to write applications that interact with Kubernetes, there is still value in this microservice that half solves your issue. ;)
 
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
 ### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
 
+<br />
 
+---
+
+<br />
 
 ## The Correct Solution
 
