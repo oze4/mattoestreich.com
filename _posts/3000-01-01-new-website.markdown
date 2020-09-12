@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "New Website!"
+title:  "My New Website!"
 date:   3000-01-01
 description: "Scrapped React for Jekyll"
 ---

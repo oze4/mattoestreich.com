@@ -11,3 +11,21 @@
   @import "toggle";
   @import "dark";
 {%- endif -%}
+
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+.ropa-sans {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
+
+body > * {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
+
+p {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
+
+.post {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
