@@ -24,14 +24,13 @@ Thankfully, I read through the comments and [found the correct solution](https:/
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
 
+### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
+
 Overall, I'm glad I did this as it helped me begin to see what is "under the hood" in Kubernetes, and maybe others can learn from this. Whether learning how to use an in-cluster-client-config with custom service accounts, or learning how to use an out-of-cluster-client-config to write applications that interact with Kubernetes, there is still value in this microservice that half solves your issue. ;)
 
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
-![ns-stuck-term-cronjob](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png){:style="max-height:60rem;"}
-<br />microservice in action
-
-### [Feel free to check out the GitHub repo here](https://github.com/oze4/service.remove-terminating-namespaces).
+<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png" alt="microservice in action" style="max-height:60rem;">
 
 ---
 
