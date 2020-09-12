@@ -1,5 +1,26 @@
-<div class="modal-img-background">
+<div class="modal-img-background" id="modal--img--background">
   <span class="modal-img-close">&times;</span>
-  <img class="modal-img-content">
-  <div class="modal-img-caption"></div>
+  <img class="modal-img-content" id="modal--img--content">
+  <div class="modal-img-caption" id="modal--img--caption"></div>
 </div>
+
+<script>
+  const allModalImages = document.querySelectorAll(".modal-image");
+  const modalImgBackground = document.getElementById("modal--img--background");
+  const modalImgContent = document.getElementById("modal--img--content");
+  const modalImgCaption = document.getElementById("modal--img--caption");
+
+  Array.from(allModalImages).forEach(modalImage => {
+    modalImage.onclick = () => {
+      modalImgBackground.style.display = "block";
+      modalImgContent.src = this.src;
+      modalImgCaption.innerHTML = this.alt;
+    }
+  });
+
+  const modalImgClose = document.getElementsByClassName("modal-img-close")[0];
+  
+  modalImgClose.onclick = () => { 
+    modal.style.display = "none";
+  }
+</script>
