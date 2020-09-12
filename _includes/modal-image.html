@@ -9,6 +9,12 @@
   const modalImgBackground = document.getElementById("modal--img--background");
   const modalImgContent = document.getElementById("modal--img--content");
   const modalImgCaption = document.getElementById("modal--img--caption");
+  const modalImgClose = document.getElementsByClassName("modal-img-close")[0];
+  
+  const closeModal = () => () => modalImgBackground.style.display = "none";
+  
+  modalImgClose.onclick = closeModal;
+  modalImgBackground.onclick = closeModal;
 
   Array.from(allModalImages).forEach(modalImage => {
     modalImage.onclick = () => {
@@ -17,10 +23,4 @@
       modalImgCaption.innerHTML = modalImage.alt;
     }
   });
-
-  const modalImgClose = document.getElementsByClassName("modal-img-close")[0];
-  
-  modalImgClose.onclick = () => { 
-    modalImgBackground.style.display = "none";
-  }
 </script>
