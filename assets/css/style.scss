@@ -3,6 +3,8 @@
 
 @import "plain";
 
+@import "comment-styles";
+
 {% if site.plainwhite.search %}
   @import "search";
 {% endif %}
