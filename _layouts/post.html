@@ -21,9 +21,6 @@ layout: default
   </div>
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
-  <div id="momomomomo">
-    {%- include comments.html -%}
-  </div>
   <script>
     var disqus_config = function () {
       this.page.url = '{{ page.url | absolute_url }}';
@@ -40,3 +37,4 @@ layout: default
       powered by Disqus.</a></noscript>
   {%- endif -%}
 </div>
+{%- include comments.html -%}
