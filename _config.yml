@@ -7,6 +7,8 @@ show_excerpts: true # set to true to show excerpts on the homepage
 
 staticman_url: https://staticmayne.herokuapp.com//v2/entry/oze4/mattoestreich.com/master/comments
 
+comments: true
+
 reCaptcha:
   enabled: true
   siteKey: 6LfVw8sZAAAAAGE1_nV4evSPBcZuZBZyLwzE8gSc
