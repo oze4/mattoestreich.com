@@ -5,6 +5,8 @@ description: > # this means to ignore newlines until "show_exerpts:"
   Matt Oestreich rants about technology & development.
 show_excerpts: true # set to true to show excerpts on the homepage
 
+staticman_url: https://staticmayne.herokuapp.com//v2/entry/oze4/mattoestreich.com/master/comments
+
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
