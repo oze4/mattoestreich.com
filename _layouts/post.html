@@ -21,6 +21,9 @@ layout: default
   </div>
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
+  {% if page.comments == true %}
+    {% include comments.html %}
+  {% endif %}
   <script>
     var disqus_config = function () {
       this.page.url = '{{ page.url | absolute_url }}';
