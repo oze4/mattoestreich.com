@@ -4,6 +4,7 @@ title:  "Kubernetes: Remove Namespaces Stuck in Terminating State"
 date:   2020-09-12
 description: "fixing the root issue, the correct solution"
 categories: kubernetes microservice golang
+comments: true
 ---
 
 Solution commonly found online only fixes half of the issue.
