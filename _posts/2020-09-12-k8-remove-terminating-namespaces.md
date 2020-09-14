@@ -17,10 +17,6 @@ If you have ever had a namespace stuck in terminating state, you have most likel
 
 Thankfully, I read through the comments and [found the correct solution](https://medium.com/@cristi.posoiu/this-is-not-the-right-way-especially-in-a-production-environment-190ff670bc62).
 
----
-
-<br />
-
 ## Jumping the gun, a microservice
 
 Unfortunately, before reading through the comments, I wrote a microservice to automate the steps outlined in the incorrect solution. 
@@ -32,10 +28,6 @@ Overall, I'm glad I did this as it helped me begin to see what is "under the hoo
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
 <img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png" alt="microservice in action" style="max-height:60rem;">
-
----
-
-<br />
 
 ## The Correct Solution
 
