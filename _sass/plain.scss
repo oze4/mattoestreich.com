@@ -28,6 +28,10 @@ body {
   font-size: 14px !important;
 }
 
+.post--list--item {
+  margin-bottom: 3rem; 
+}
+
 img,
 embed,
 object,
@@ -230,7 +234,7 @@ main {
   padding-left: 30px;
 }
 .post {
-  font-family: "Merriweather", sans-serif;
+  font-family: "Ropa Sans", sans-serif;
   font-weight: 300;
   color: #222;
   line-height: 1.9em;
@@ -251,7 +255,7 @@ main {
   h4,
   h5,
   h6 {
-    font-family: Raleway, sans-serif;
+    font-family: "Ropa Sans", sans-serif;
   }
 }
 .posts-labelgroup {
@@ -280,6 +284,6 @@ table {
   }
   th {
     background-color: #eee;
-    font-family: Raleway;
+    font-family: "Ropa Sans", sans-serif;
   }
 }
