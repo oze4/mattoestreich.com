@@ -27,7 +27,9 @@ Overall, I'm glad I did this as it helped me begin to see what is "under the hoo
 
 I wrote this microservice using [the official Kubernetes Golang SDK, `client-go`](https://github.com/kubernetes/client-go) and it is designed to run as a cron job once per hour (which you can modify). 
 
+<div style="text-align:center">
 <img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/ns-stuck-term-cronjob.png" alt="microservice in action" style="max-height:60rem;">
+</div>
 
 ## The Correct Solution
 
