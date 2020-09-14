@@ -17,7 +17,7 @@ $leftWidth: 220px;
 
 body {
   font-family: "Ropa Sans", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2em;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +25,7 @@ body {
 }
 
 #dark--mode--toggle {
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 img,
@@ -103,7 +103,7 @@ main {
     .tagline {
       text-align: center;
       font-size: 16px;
-      margin-top: .1rem !important;
+      margin-top: .5rem !important;
       color: #aaa;
       white-space: pre-wrap;
       line-height: normal;
