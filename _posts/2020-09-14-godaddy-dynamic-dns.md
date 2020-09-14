@@ -20,7 +20,8 @@ So, I figured I would marry the two and write a "microservice" to run as a CronJ
 In order to properly create this "microservice", or dynamic DNS client, I knew I would need an SDK for GoDaddy's API. I took this as an opportunity to write my own GoDaddy SDK in `Go`, called `godaddygo`, which you can [read more about here](https://mattoestreich.com/golang/sdk/godaddy/godaddygo/2020/09/11/godaddygo.html). Once I was through writing the bare minimum I needed (the SDK does not support ALL of the API's features), I wrote the actual microservice.
 
 <div style="text-align:center;">
-<img title="godaddy" style="max-width:20rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy.jpeg" alt="godaddy">
+<img title="godaddy" style="max-width:5rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy.jpeg" alt="godaddy">
+<p><small>godaddy</small></p>
 </div>
 
 We pull your current public IP from [https://icanhazip.com](https://icanhazip.com) and match that to a `BASELINE_RECORD` that you will need to create within your zone. We use the `BASELINE_RECORD` as a database of sorts, it is the record we use to compare with what `icanhazip.com` reports. This is how we know your public IP has changed.
