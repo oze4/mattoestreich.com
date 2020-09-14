@@ -2,7 +2,7 @@
 layout: post
 title:  "Homegrown Dynamic DNS for GoDaddy"
 date:   2020-09-14
-categories: kubernetes godaddygo dynamic-dns godaddy
+categories: kubernetes godaddygo dynamic-dns dns godaddy
 ---
 
 This container helps make you flexible.
