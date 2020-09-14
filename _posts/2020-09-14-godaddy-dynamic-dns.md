@@ -55,6 +55,7 @@ You can either build the container yourself or use the one [on my Docker Hub](ht
 Hopefully, this can be of use to someone!
 
 <div style="max-height:35rem;">
+</div>
 
 ```golang
 package main
