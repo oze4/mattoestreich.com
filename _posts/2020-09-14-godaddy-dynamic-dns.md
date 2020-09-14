@@ -9,7 +9,7 @@ This container helps make you flexible.
 
 ### [Check out the GitHub repo here](https://github.com/oze4/service.godaddy-dynamic-dns)
 
-I recently stood up an at home (lab) Kubernetes cluster. While standing up some services, I realized I would need some sort of dynamic DNS client due to the fact I do not have a static public IP.  While learning Kubernetes, and ultimately studying for my CKA/CKAD, I am simultaneously learning `Go`. 
+I recently stood up an at home (lab) Kubernetes cluster to help with studying for my CKA/CKAD as well as started to learn `Go`. While standing up some services, I realized I would need some sort of dynamic DNS client due to the fact I do not have a static public IP.
 
 <div style="text-align:center;">
 <img title="kubernetes" style="max-width:20rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
@@ -25,12 +25,23 @@ In order to properly create this "microservice", or dynamic DNS client, I knew I
 
 We pull your current public IP from [https://icanhazip.com](https://icanhasip.com) and match that to a `BASELINE_RECORD` that you will need to create within your zone. We use the `BASELINE_RECORD` as a database of sorts, it is the record we use to compare with what `icanhazip.com` reports. This is how we know your public IP has changed.
 
-*You **have** to use these environmental variables, whether from `dotenv` or `docker run -e ...`*:
-
 ```bash
+# You **have** to use these environmental variables
+# Whether from `dotenv` or `docker run -e <...>`
+
+# Your GoDaddy API key
 GODADDY_APIKEY=<your_api_key>
+
+# Your GoDaddy API secret
 GODADDY_APISECRET=<your_api_secret>
+
+# The domain you would like to target
 GODADDY_DOMAIN=<domainyouown.com>
+
+# The A record within that domains zone to use as our
+# baseline
+# I generated a GUID and just used that as my baseline
+# record
 BASELINE_RECORD=<someArecord>
 ```
 You can either build the container yourself or use the one [on my Docker Hub](https://hub.docker.com/repository/docker/oze4/godaddy-dynamic-dns).
