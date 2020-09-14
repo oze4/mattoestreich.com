@@ -81,7 +81,12 @@ button:hover {
 // Staticman existing comments
 //
 .comments {
-    padding: 1rem 4rem 4rem 4rem;
+    @media screen and (max-width: $mobileW) {
+        padding: 1rem 4rem 4rem 4rem;
+    }
+    @media screen and (max-width: $mobileW) {
+        padding: 1rem 4rem 4rem 4rem;
+    }
 }
 .comment__new {
     padding: 0px 0px 14px 0px;
