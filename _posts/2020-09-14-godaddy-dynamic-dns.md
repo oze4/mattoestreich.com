@@ -49,6 +49,7 @@ You can either build the container yourself or use the one [on my Docker Hub](ht
 
 <div style="text-align:center;">
 <img style="max-height:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy-dynamic-dns-cronjob-running.png" alt="godaddy-dynamic-dns container running">
+<p style="margin:0;">cronjob running</p>
 </div>
 
 Hopefully, this can be of use to someone!
