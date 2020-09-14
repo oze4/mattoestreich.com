@@ -10,7 +10,7 @@ I have been learning `Go` for a couple of weeks now, this is what I built while 
 
 ## [godaddygo](https://github.com/oze4/godaddygo)
 
-![texture theme preview](https://raw.githubusercontent.com/oze4/mattoestreich.com/master/golang.jpg)
+<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/golang.jpg" alt="golang">
 [Credit to /u/dgryski](https://www.reddit.com/r/golang/comments/2ahs7k/gopher_mascot_wallpaper/)
 
 After getting laid off I decided to spend some time learning new things, as to better myself and my career. About a year ago or so, I fiddled with Kubernetes on DigitalOcean - this was, of course, after failing to run it on some hardware I had laying around. The support for bare-metal load balancers wasn't like it is today (or I just wasn't as competent).
