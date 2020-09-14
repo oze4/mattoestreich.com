@@ -46,4 +46,9 @@ BASELINE_RECORD=<someArecord>
 ```
 You can either build the container yourself or use the one [on my Docker Hub](https://hub.docker.com/repository/docker/oze4/godaddy-dynamic-dns).
 
+
+<div style="text-align:center;">
+<img style="max-height:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy-dynamic-dns-cronjob-running.png" alt="godaddy-dynamic-dns container running">
+</div>
+
 Hopefully, this can be of use to someone!
