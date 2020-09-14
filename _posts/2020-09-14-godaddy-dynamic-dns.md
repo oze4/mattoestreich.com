@@ -55,104 +55,100 @@ You can either build the container yourself or use the one [on my Docker Hub](ht
 Hopefully, this can be of use to someone!
 
 <div style="max-height:35rem;">
-</div>
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-```golang
-package main
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"errors"</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"io/ioutil"</span>
+	<span class="s">"log"</span>
+	<span class="s">"net/http"</span>
+	<span class="s">"os"</span>
+	<span class="s">"strings"</span>
 
-import (
-	"errors"
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"strings"
+	<span class="s">"github.com/joho/godotenv"</span>
+	<span class="s">"github.com/oze4/godaddygo"</span>
+<span class="p">)</span>
 
-	"github.com/joho/godotenv"
-	"github.com/oze4/godaddygo"
-)
+<span class="c">// GoDaddy holds godaddy api creds</span>
+<span class="k">type</span> <span class="n">GoDaddy</span> <span class="k">struct</span> <span class="p">{</span>
+	<span class="n">key</span>            <span class="kt">string</span>
+	<span class="n">secret</span>         <span class="kt">string</span>
+	<span class="n">domain</span>         <span class="kt">string</span>
+	<span class="n">baselineRecord</span> <span class="kt">string</span>
+<span class="p">}</span>
 
-// GoDaddy holds godaddy api creds
-type GoDaddy struct {
-	key            string
-	secret         string
-	domain         string
-	baselineRecord string
-}
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">godotenv</span><span class="o">.</span><span class="n">Load</span><span class="p">()</span>
 
-func main() {
-	godotenv.Load()
+	<span class="n">fromapi</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">getFromAPI</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">log</span><span class="o">.</span><span class="n">Fatalf</span><span class="p">(</span><span class="s">"Error getting public IP from https://icanhazip.com %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
 
-	fromapi, err := getFromAPI()
-	if err != nil {
-		log.Fatalf("Error getting public IP from https://icanhazip.com %s\n", err.Error())
-		os.Exit(1)
-	}
+	<span class="n">gd</span> <span class="o">:=</span> <span class="n">GoDaddy</span><span class="p">{</span>
+		<span class="n">key</span><span class="o">:</span>            <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_APIKEY"</span><span class="p">),</span>
+		<span class="n">secret</span><span class="o">:</span>         <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_APISECRET"</span><span class="p">),</span>
+		<span class="n">domain</span><span class="o">:</span>         <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_DOMAIN"</span><span class="p">),</span>
+		<span class="n">baselineRecord</span><span class="o">:</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"BASELINE_RECORD"</span><span class="p">),</span>
+	<span class="p">}</span>
 
-	gd := GoDaddy{
-		key:            os.Getenv("GODADDY_APIKEY"),
-		secret:         os.Getenv("GODADDY_APISECRET"),
-		domain:         os.Getenv("GODADDY_DOMAIN"),
-		baselineRecord: os.Getenv("BASELINE_RECORD"),
-	}
+	<span class="n">fromgodaddy</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">getFromGoDaddy</span><span class="p">(</span><span class="n">gd</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">log</span><span class="o">.</span><span class="n">Fatalf</span><span class="p">(</span><span class="s">"Error getting IP from GoDaddy %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
 
-	fromgodaddy, err := getFromGoDaddy(gd)
-	if err != nil {
-		log.Fatalf("Error getting IP from GoDaddy %s\n", err.Error())
-		os.Exit(1)
-	}
+	<span class="n">tfromapi</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">TrimSpace</span><span class="p">(</span><span class="n">fromapi</span><span class="p">)</span>
+	<span class="n">tfromgodaddy</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">TrimSpace</span><span class="p">(</span><span class="n">fromgodaddy</span><span class="p">)</span>
 
-	tfromapi := strings.TrimSpace(fromapi)
-	tfromgodaddy := strings.TrimSpace(fromgodaddy)
+	<span class="k">if</span> <span class="n">tfromapi</span> <span class="o">!=</span> <span class="n">tfromgodaddy</span> <span class="p">{</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Public IP has changed, updating GoDaddy now. Old: "</span> <span class="o">+</span> <span class="n">tfromgodaddy</span> <span class="o">+</span> <span class="s">" New: "</span> <span class="o">+</span> <span class="n">tfromapi</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">updateGoDaddy</span><span class="p">(</span><span class="n">gd</span><span class="p">,</span> <span class="n">tfromapi</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+			<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Public IP has not changed: "</span> <span class="o">+</span> <span class="n">tfromapi</span><span class="p">)</span>
+	<span class="p">}</span>
 
-	if tfromapi != tfromgodaddy {
-		fmt.Println("Public IP has changed, updating GoDaddy now. Old: " + tfromgodaddy + " New: " + tfromapi)
-		if err := updateGoDaddy(gd, tfromapi); err != nil {
-			fmt.Println(err.Error())
-			os.Exit(1)
-		}
-	} else {
-		fmt.Println("Public IP has not changed: " + tfromapi)
-	}
+	<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="p">}</span>
 
-	os.Exit(0)
-}
+<span class="k">func</span> <span class="n">getFromAPI</span><span class="p">()</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"https://icanhazip.com"</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+	<span class="k">defer</span> <span class="n">resp</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+	<span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">strings</span><span class="o">.</span><span class="n">TrimSpace</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="no">nil</span>
+<span class="p">}</span>
 
-func getFromAPI() (string, error) {
-	resp, err := http.Get("https://icanhazip.com")
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(body)), nil
-}
+<span class="k">func</span> <span class="n">getFromGoDaddy</span><span class="p">(</span><span class="n">g</span> <span class="n">GoDaddy</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">r</span><span class="p">,</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">godaddygo</span><span class="o">.</span><span class="n">ConnectProduction</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">secret</span><span class="p">)</span><span class="o">.</span><span class="n">V1</span><span class="p">()</span><span class="o">.</span><span class="n">Domain</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span><span class="o">.</span><span class="n">Records</span><span class="p">()</span><span class="o">.</span><span class="n">GetByTypeName</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">baselineRecord</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">e</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">)[</span><span class="m">0</span><span class="p">]</span><span class="o">.</span><span class="n">Data</span><span class="p">,</span> <span class="no">nil</span>
+<span class="p">}</span>
 
-func getFromGoDaddy(g GoDaddy) (string, error) {
-	r, e := godaddygo.ConnectProduction(g.key, g.secret).V1().Domain(g.domain).Records().GetByTypeName("A", g.baselineRecord)
-	if e != nil {
-		return "", e
-	}
-	return (*r)[0].Data, nil
-}
-
-func updateGoDaddy(g GoDaddy, newIP string) error {
-	recs := godaddygo.ConnectProduction(g.key, g.secret).V1().Domain(g.domain).Records()
-	r, e := recs.GetByType("A")
-	if e != nil {
-		return e
-	}
-	for _, d := range *r {
-		if e := recs.SetValue(d.Type, d.Name, newIP); e != nil {
-			return errors.New("Error setting record: " + d.Name)
-		}
-	}
-	return nil
-}
-```
-
+<span class="k">func</span> <span class="n">updateGoDaddy</span><span class="p">(</span><span class="n">g</span> <span class="n">GoDaddy</span><span class="p">,</span> <span class="n">newIP</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="n">recs</span> <span class="o">:=</span> <span class="n">godaddygo</span><span class="o">.</span><span class="n">ConnectProduction</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">secret</span><span class="p">)</span><span class="o">.</span><span class="n">V1</span><span class="p">()</span><span class="o">.</span><span class="n">Domain</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span><span class="o">.</span><span class="n">Records</span><span class="p">()</span>
+	<span class="n">r</span><span class="p">,</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">recs</span><span class="o">.</span><span class="n">GetByType</span><span class="p">(</span><span class="s">"A"</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">e</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="o">:=</span> <span class="k">range</span> <span class="o">*</span><span class="n">r</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">recs</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">newIP</span><span class="p">);</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">errors</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"Error setting record: "</span> <span class="o">+</span> <span class="n">d</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </div>
