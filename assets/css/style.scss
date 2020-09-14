@@ -16,6 +16,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 
+code, kbd, pre, samp {
+  font-size: 1rem !important; 
+}
+
 .ropa-sans {
   font-family: 'Ropa Sans', sans-serif !important;
 }
