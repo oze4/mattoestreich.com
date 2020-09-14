@@ -47,14 +47,14 @@ BASELINE_RECORD=<someArecord>
 You can either build the container yourself or use the one [on my Docker Hub](https://hub.docker.com/repository/docker/oze4/godaddy-dynamic-dns). The code for the full "microservice" can be found below.
 
 
-<div style="text-align:center;overflow:scroll;">
+<div style="text-align:center;">
 <img style="max-height:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy-dynamic-dns-cronjob-running.png" alt="godaddy-dynamic-dns container running">
 <p style="margin:0;">cronjob running</p>
 </div>
 
 Hopefully, this can be of use to someone!
 
-<div style="max-height:35rem;">
+<div style="max-height:35rem;overflow:scroll;">
 <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
