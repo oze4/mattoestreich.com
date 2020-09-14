@@ -82,9 +82,9 @@ button:hover {
 //
 .comments {
     @media screen and (max-width: $mobileW) {
-        padding: 1rem 4rem 4rem 4rem;
+        padding: 1rem;
     }
-    @media screen and (max-width: $mobileW) {
+    @media screen and (min-width: $mobileW) {
         padding: 1rem 4rem 4rem 4rem;
     }
 }
