@@ -23,7 +23,7 @@ In order to properly create this "microservice", or dynamic DNS client, I knew I
 <img title="godaddy" style="max-width:20rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy.jpeg" alt="godaddy">
 </div>
 
-We pull your current public IP from [https://icanhazip.com](https://icanhasip.com) and match that to a `BASELINE_RECORD` that you will need to create within your zone. We use the `BASELINE_RECORD` as a database of sorts, it is the record we use to compare with what `icanhazip.com` reports. This is how we know your public IP has changed.
+We pull your current public IP from [https://icanhazip.com](https://icanhazip.com) and match that to a `BASELINE_RECORD` that you will need to create within your zone. We use the `BASELINE_RECORD` as a database of sorts, it is the record we use to compare with what `icanhazip.com` reports. This is how we know your public IP has changed.
 
 ```bash
 # You **have** to use these environmental variables
