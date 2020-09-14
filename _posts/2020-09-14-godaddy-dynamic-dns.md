@@ -7,13 +7,13 @@ categories: kubernetes godaddygo dynamic-dns godaddy
 
 This container helps make you flexible.
 
+<div style="text-align:center;">
+<img title="kubernetes" style="max-width:25rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
+</div>
+
 ### [Check out the GitHub repo here](https://github.com/oze4/service.godaddy-dynamic-dns)
 
 I recently stood up an at home (lab) Kubernetes cluster to help with studying for my CKA/CKAD as well as started to learn `Go`. While standing up some services, I realized I would need some sort of dynamic DNS client due to the fact I do not have a static public IP.
-
-<div style="text-align:center;">
-<img title="kubernetes" style="max-width:20rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
-</div>
 
 So, I figured I would marry the two and write a "microservice" to run as a CronJob that updates my public IP (hosted with GoDaddy) when it changes (you can also compile the `Go` code and run on demand if you would like).
 
