@@ -10,9 +10,8 @@ This is one of the coolest things I've seen in a while.
 
 <div style="text-align:center">
 <img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
+  <span><a href="https://wails.app/" rel="noopener noreferrer" target="_blank">Wails</a>is like <ahref="https://www.electronjs.org/" rel="noopener noreferrer" target="_blank">Electron</a>, but written in <code>Go</code> and it is amazing!</span>
 </div>
-
-[Wails](https://wails.app/) is like [Electron](https://www.electronjs.org/) but written in `Go` and it is amazing!
 
 <div style="text-align:center">
 <img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/electronlogo.png" alt="electron">
