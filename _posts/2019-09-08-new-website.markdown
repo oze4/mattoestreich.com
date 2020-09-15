@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "My New Website!"
-date:   3000-01-01
+date:   2019-09-08
 description: "Scrapped React for Jekyll"
-categories: sticky
+categories: website misc new-website
 ---
 
 I recently changed how my personal website is developed. 
