@@ -10,7 +10,7 @@ This is one of the coolest things I've seen in a while.
 
 <div style="text-align:center">
 <img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
-  <p style="margin-bottom:2rem;"><a href="https://wails.app/" rel="noopener noreferrer" target="_blank">Wails</a>is like <a href="https://www.electronjs.org/" rel="noopener noreferrer" target="_blank">Electron</a>, but written in <code>Go</code> and it is amazing!</p>
+  <p style="margin-bottom:2rem;"><a href="https://wails.app/" rel="noopener noreferrer" target="_blank">Wails</a> is like <a href="https://www.electronjs.org/" rel="noopener noreferrer" target="_blank">Electron</a>, but written in <code>Go</code> and it is amazing!</p>
 </div>
 
 <div style="text-align:center">
