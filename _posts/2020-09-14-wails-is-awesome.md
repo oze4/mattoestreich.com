@@ -9,13 +9,13 @@ categories: wails golang electron nodejs
 This is one of the coolest things I've seen in a while.
 
 <div style="text-align:center">
-<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
+<img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
 </div>
 
 [Wails](https://wails.app/) is like [Electron](https://www.electronjs.org/) but written in `Go` and it is amazing!
 
 <div style="text-align:center">
-<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/electronlogo.png" alt="wails">
+<img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/electronlogo.png" alt="electron">
 </div>
 
 It comes with it's own command line utility that allows you to easily stand-up, develop, build, and package your app. All with your choice of front-end!! The command line utility allows you to select `Vue`, `React`, `Svelte`, and a handful of other front-end frameworks, as your front-end of choice.
