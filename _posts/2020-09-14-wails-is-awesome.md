@@ -12,9 +12,7 @@ This is one of the coolest things I've seen in a while.
 <img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
 </div>
 
-<p style="margin-bottom:2rem;"><a href="https://wails.app/" rel="noopener noreferrer" target="_blank">Wails</a> is like <a href="https://www.electronjs.org/" rel="noopener noreferrer" target="_blank">Electron</a>, but written in <code>Go</code> and it is amazing!</p>
-
-It comes with it's own command line utility that allows you to easily stand-up, develop, build, and package your app *cross-platform*. 
+[Wails](https://wails.app/) is like [Electron](https://www.electronjs.org/) but written in Go and it is amazing! It comes with it's own command line utility that allows you to easily stand-up, develop, build, and package your app *cross-platform*. 
 
 All with your choice of front-end!! The command line utility allows you to select...
 
@@ -23,8 +21,6 @@ All with your choice of front-end!! The command line utility allows you to selec
  - `Svelte`
  - and a handful of other front-end frameworks 
 
-...as your front-end of choice.
-
-Extremely intuitive and one of the coolest things I've seen in a while.
+...as your front-end of choice. Extremely intuitive and one of the coolest things I've seen in a while.
 
 I plan to expand on [godaddygo](https://github.com/oze4/godaddygo) in order to make it more versatile, then integrating it into an open-source dynamic DNS client that can be used for a variety of vendors. The idea is to allow users to easily import their own DNS providers, so long they satisfy an interface or interfaces. I'll be writing something up on that as well.
