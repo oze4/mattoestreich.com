@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My New Website!"
-date:   2019-09-08
+date:   2020-09-08
 description: "Scrapped React for Jekyll"
 categories: website misc new-website
 ---
