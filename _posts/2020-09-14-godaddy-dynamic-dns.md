@@ -8,7 +8,7 @@ categories: kubernetes godaddygo dynamic-dns dns godaddy
 This container helps make you flexible.
 
 <div style="text-align:center;">
-<img title="kubernetes" style="max-width:25rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
+<img title="kubernetes" style="max-width:80%;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
 </div>
 
 ### [Check out the GitHub repo here](https://github.com/oze4/service.godaddy-dynamic-dns)
