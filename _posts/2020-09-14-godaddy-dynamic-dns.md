@@ -56,135 +56,132 @@ You can either build the container yourself or use the one [on my Docker Hub](ht
 
 Hopefully, this can be of use to someone!
 
-```golang
-package main
-
-import (
-	"errors"
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"strings"
-
-	"github.com/joho/godotenv"
-	"github.com/oze4/godaddygo"
-	"github.com/oze4/godaddygo/pkg/endpoints"
-)
-
-const icanhazipURL = "https://icanhazip.com"
-
-func main() {
-	godotenv.Load()
-
-	api := newIcanhazip()
-
-	apires, err := api.get()
-	if err != nil {
-		log.Fatalf("Error getting public IP from %s %s\n", icanhazipURL, err.Error())
-		os.Exit(1)
-	}
-
-	k := os.Getenv("GODADDY_APIKEY")
-	s := os.Getenv("GODADDY_APISECRET")
-	d := os.Getenv("GODADDY_DOMAIN")
-
-	gd := newGoDaddy(k, s, d)
-
-	gdres, err := gd.get()
-	if err != nil {
-		explainStrExit("Error getting IP from GoDaddy: "+err.Error(), 1)
-	}
-
-	if apires == gdres {
-		explainStrExit("Public IP has not changed: "+apires, 0)
-	}
-
-	explainStr("Public IP has changed, updating GoDaddy now. Old: " + gdres + " New: " + apires)
-
-	if err := gd.update(apires); err != nil {
-		explainStrExit("Error updating GoDaddy DNS: "+err.Error(), 1)
-	}
-
-	explainStrExit("\nDone\n", 0)
-}
-
-/**
- * helper functions
- */
-
-func explainStr(message string) {
-	fmt.Printf("%s\n", message)
-}
-
-func explainStrExit(message string, exitCode int) {
-	fmt.Printf("%s\n", message)
-	os.Exit(exitCode)
-}
-
-/**
- * icanhazip
- */
-
-func newIcanhazip() icanhazip {
-	return icanhazip{}
-}
-
-type icanhazip struct{}
-
-func (i icanhazip) get() (string, error) {
-	resp, err := http.Get(icanhazipURL)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(body)), nil
-}
-
-/**
- * godaddy
- */
-
-func newGoDaddy(k, s, d string) goDaddy {
-	baseline := os.Getenv("BASELINE_RECORD")
-	api := godaddygo.ConnectProduction(k, s).V1().Domain(d).Records()
-	return goDaddy{baseline, api}
-}
-
-type goDaddy struct {
-	baseline string // BASELINE_RECORD
-	recs     endpoints.Records
-}
-
-// get returns the *value* of your `BASELINE_RECORD`
-func (g *goDaddy) get() (string, error) {
-	r, e := g.recs.GetByTypeName("A", g.baseline)
-	if e != nil {
-		return "", e
-	}
-	return strings.TrimSpace((*r)[0].Data), nil
-}
-
-// update sets all A records to your new public IP
-func (g goDaddy) update(newIP string) error {
-	r, e := g.recs.GetByType("A")
-	if e != nil {
-		return e
-	}
-	for _, d := range *r {
-		if e := g.recs.SetValue(d.Type, d.Name, newIP); e != nil {
-			return errors.New("Error setting record: " + d.Name)
-		}
-	}
-	return nil
-}
-```
-
 <div style="max-height:35rem;overflow:scroll;">
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"errors"</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"io/ioutil"</span>
+	<span class="s">"log"</span>
+	<span class="s">"net/http"</span>
+	<span class="s">"os"</span>
+	<span class="s">"strings"</span>
+
+	<span class="s">"github.com/joho/godotenv"</span>
+	<span class="s">"github.com/oze4/godaddygo"</span>
+	<span class="s">"github.com/oze4/godaddygo/pkg/endpoints"</span>
+<span class="p">)</span>
+
+<span class="k">const</span> <span class="n">icanhazipURL</span> <span class="o">=</span> <span class="s">"https://icanhazip.com"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">godotenv</span><span class="o">.</span><span class="n">Load</span><span class="p">()</span>
+
+	<span class="n">api</span> <span class="o">:=</span> <span class="n">newIcanhazip</span><span class="p">()</span>
+
+	<span class="n">apires</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">log</span><span class="o">.</span><span class="n">Fatalf</span><span class="p">(</span><span class="s">"Error getting public IP from %s %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">icanhazipURL</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="n">k</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_APIKEY"</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_APISECRET"</span><span class="p">)</span>
+	<span class="n">d</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"GODADDY_DOMAIN"</span><span class="p">)</span>
+
+	<span class="n">gd</span> <span class="o">:=</span> <span class="n">newGoDaddy</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+	<span class="n">gdres</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">gd</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">explainStrExit</span><span class="p">(</span><span class="s">"Error getting IP from GoDaddy: "</span><span class="o">+</span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">(),</span> <span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="n">apires</span> <span class="o">==</span> <span class="n">gdres</span> <span class="p">{</span>
+		<span class="n">explainStrExit</span><span class="p">(</span><span class="s">"Public IP has not changed: "</span><span class="o">+</span><span class="n">apires</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="n">explainStr</span><span class="p">(</span><span class="s">"Public IP has changed, updating GoDaddy now. Old: "</span> <span class="o">+</span> <span class="n">gdres</span> <span class="o">+</span> <span class="s">" New: "</span> <span class="o">+</span> <span class="n">apires</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">gd</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">apires</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">explainStrExit</span><span class="p">(</span><span class="s">"Error updating GoDaddy DNS: "</span><span class="o">+</span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">(),</span> <span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="n">explainStrExit</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Done</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c">/**
+ * helper functions
+ */</span>
+
+<span class="k">func</span> <span class="n">explainStr</span><span class="p">(</span><span class="n">message</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">explainStrExit</span><span class="p">(</span><span class="n">message</span> <span class="kt">string</span><span class="p">,</span> <span class="n">exitCode</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+	<span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="n">exitCode</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c">/**
+ * icanhazip
+ */</span>
+
+<span class="k">func</span> <span class="n">newIcanhazip</span><span class="p">()</span> <span class="n">icanhazip</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">icanhazip</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">icanhazip</span> <span class="k">struct</span><span class="p">{}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">i</span> <span class="n">icanhazip</span><span class="p">)</span> <span class="n">get</span><span class="p">()</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">icanhazipURL</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+	<span class="k">defer</span> <span class="n">resp</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+	<span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">strings</span><span class="o">.</span><span class="n">TrimSpace</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="no">nil</span>
+<span class="p">}</span>
+
+<span class="c">/**
+ * godaddy
+ */</span>
+
+<span class="k">func</span> <span class="n">newGoDaddy</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">d</span> <span class="kt">string</span><span class="p">)</span> <span class="n">goDaddy</span> <span class="p">{</span>
+	<span class="n">baseline</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s">"BASELINE_RECORD"</span><span class="p">)</span>
+	<span class="n">api</span> <span class="o">:=</span> <span class="n">godaddygo</span><span class="o">.</span><span class="n">ConnectProduction</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">V1</span><span class="p">()</span><span class="o">.</span><span class="n">Domain</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">Records</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">goDaddy</span><span class="p">{</span><span class="n">baseline</span><span class="p">,</span> <span class="n">api</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">goDaddy</span> <span class="k">struct</span> <span class="p">{</span>
+	<span class="n">baseline</span> <span class="kt">string</span> <span class="c">// BASELINE_RECORD</span>
+	<span class="n">recs</span>     <span class="n">endpoints</span><span class="o">.</span><span class="n">Records</span>
+<span class="p">}</span>
+
+<span class="c">// get returns the *value* of your `BASELINE_RECORD`</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span><span class="n">goDaddy</span><span class="p">)</span> <span class="n">get</span><span class="p">()</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">r</span><span class="p">,</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">g</span><span class="o">.</span><span class="n">recs</span><span class="o">.</span><span class="n">GetByTypeName</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">baseline</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">e</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">strings</span><span class="o">.</span><span class="n">TrimSpace</span><span class="p">((</span><span class="o">*</span><span class="n">r</span><span class="p">)[</span><span class="m">0</span><span class="p">]</span><span class="o">.</span><span class="n">Data</span><span class="p">),</span> <span class="no">nil</span>
+<span class="p">}</span>
+
+<span class="c">// update sets all A records to your new public IP</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">g</span> <span class="n">goDaddy</span><span class="p">)</span> <span class="n">update</span><span class="p">(</span><span class="n">newIP</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="n">r</span><span class="p">,</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">g</span><span class="o">.</span><span class="n">recs</span><span class="o">.</span><span class="n">GetByType</span><span class="p">(</span><span class="s">"A"</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">e</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="o">:=</span> <span class="k">range</span> <span class="o">*</span><span class="n">r</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="n">e</span> <span class="o">:=</span> <span class="n">g</span><span class="o">.</span><span class="n">recs</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">newIP</span><span class="p">);</span> <span class="n">e</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">errors</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"Error setting record: "</span> <span class="o">+</span> <span class="n">d</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </div>
