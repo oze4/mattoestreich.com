@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html
+  class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded"
+  data-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0"
+  lang="en"
+>
+  <!--<!
+  [endif]--><head>
+    {%- include post-head.html -%}
+  </head>
+
+  <body id="top" class="pace-done">
+    <div class="pace pace-inactive">
+      <div class="pace-progress" style="transform: translate3d(100%, 0px, 0px)" data-progress-text="100%" data-progress="99">
+        <div class="pace-progress-inner"></div>
+      </div>
+      <div class="pace-activity"></div>
+    </div>
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+      <div class="header-logo">
+        <a class="site-logo" href="{{ "/" | relative_url}}"><img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}"></a>
+      </div>
+
+      {%- include post-header-nav.html -#}
+
+      <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+    </header>
+    <!-- end s-header -->
+
+    <article class="blog-single">
+      {{ content }}
+    </article>
+
+    <!-- footer
+    ================================================== -->
+    {%- include post-footer.html -%}
+    <!-- end footer -->
+
+    {%- include post-loader.html -%}
+
+    <!-- Java Script
+        ================================================== -->
+    <script src="/assets/post2/jquery-3.js"></script>
+    <script src="/assets/post2/plugins.js"></script>
+    <script src="/assets/post2/main.js"></script>
+  </body>
+</html>
