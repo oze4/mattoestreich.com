@@ -1,8 +1,8 @@
 ---
 layout: post2
-title:  "Kubernetes: Remove Namespaces Stuck in Terminating State"
-date:   2020-09-12
-description: "fixing the root issue, the correct solution"
+title:  "Post Testing Please Ignore"
+date:   1920-01-01
+description: "testing something you can ignore this"
 categories: kubernetes microservice golang
 comments: true
 ---
