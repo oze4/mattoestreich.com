@@ -1,16 +1,13 @@
 ---
-layout: post
+layout: article
 title:  "Meet the Electron-esque Golang framework, Wails"
 description: "with your choice of front-end, too!"
 date:   2020-09-14
+headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png
 categories: wails golang electron nodejs
 ---
 
 This is one of the coolest things I've seen in a while.
-
-<div style="text-align:center">
-<img style="max-width:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/wailslogo.png" alt="wails">
-</div>
 
 [Wails](https://wails.app/) is like [Electron](https://www.electronjs.org/) but written in Go and it is amazing! It comes with it's own command line utility that allows you to easily stand-up, develop, build, and package your app *cross-platform*. 
 

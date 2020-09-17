@@ -9,7 +9,7 @@
 >
   <!--<!
   [endif]--><head>
-    {%- include post/head.html -%}
+    {%- include article/head.html -%}
   </head>
 
   <body id="top" class="pace-done">
@@ -28,11 +28,11 @@
           <img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}">
         </a>
       </div>
-      {%- include post/header/nav.html -%}
+      {%- include article/header/nav.html -%}
     </header>
     <!-- end s-header -->
 
-    {%- include post/header/index.html -%}
+    {%- include article/header/index.html -%}
 
     <article class="blog-single">
       {{ content }}
@@ -41,15 +41,15 @@
 
     <!-- footer
     ================================================== -->
-    {%- include post/footer/index.html -%}
+    {%- include article/footer/index.html -%}
     <!-- end footer -->
 
-    {%- include post/loader.html -%}
+    {%- include article/loader.html -%}
 
     <!-- Java Script
         ================================================== -->
-    <script src="/assets/post/jquery-3.js"></script>
-    <script src="/assets/post/plugins.js"></script>
-    <script src="/assets/post/main.js"></script>
+    <script src="/assets/article/jquery-3.js"></script>
+    <script src="/assets/article/plugins.js"></script>
+    <script src="/assets/article/main.js"></script>
   </body>
 </html>

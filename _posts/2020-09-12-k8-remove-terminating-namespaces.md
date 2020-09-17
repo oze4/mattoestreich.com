@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article
 title:  "Kubernetes: Remove Namespaces Stuck in Terminating State"
 date:   2020-09-12
 description: "fixing the root issue, the correct solution"

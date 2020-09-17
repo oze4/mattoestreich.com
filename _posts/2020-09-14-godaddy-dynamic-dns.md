@@ -1,16 +1,14 @@
 ---
-layout: post
+layout: article
 title:  "Homegrown Dynamic DNS for GoDaddy"
 description: "this container helps make you flexible"
 date:   2020-09-14
+headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/hummingbird.jpg
+headerImageHeight: 80%
 categories: kubernetes godaddygo dynamic-dns dns godaddy
 ---
 
 This container helps make you flexible.
-
-<div style="text-align:center;">
-<img title="kubernetes" style="max-width:80%;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png" alt="kubernetes">
-</div>
 
 ### [Check out the GitHub repo here](https://github.com/oze4/service.godaddy-dynamic-dns)
 
@@ -46,6 +44,9 @@ GODADDY_DOMAIN=<domainyouown.com>
 # record
 BASELINE_RECORD=<someArecord>
 ```
+
+<br />
+
 You can either build the container yourself or use the one [on my Docker Hub](https://hub.docker.com/repository/docker/oze4/godaddy-dynamic-dns). The code for the full "microservice" can be found below.
 
 

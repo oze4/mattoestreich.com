@@ -964,6 +964,7 @@ a.pswp__share--download:hover {
     color: #333333;
 }
 
+/*
 @media screen {
     .str {
         color: #dd1144;
@@ -1008,7 +1009,9 @@ a.pswp__share--download:hover {
         color: #990000;
     }
 }
+*/
 
+/*
 @media print, projection {
     .str {
         color: #006600;
@@ -1042,6 +1045,7 @@ a.pswp__share--download:hover {
         color: #006600;
     }
 }
+*/
 
 
 /* Specify class=linenums on a pre to get line numbering */

@@ -58,8 +58,8 @@
  *
  * ------------------------------------------------------------------- */
 
-/* @import url("/assets/post/iconmonstr-iconic-font.min.css"); */
-/* @import url("/assets/post/fonts.css"); */
+/* @import url("/assets/article/iconmonstr-iconic-font.min.css"); */
+/* @import url("/assets/article/fonts.css"); */
 
 
 
@@ -285,7 +285,7 @@ var, kbd, samp, code, pre {
 }
 
 pre {
-    padding: 2.4rem 3rem 3rem;
+    /* padding: 2.4rem 3rem 3rem; */
     background: #F1F1F1;
     overflow-x: auto;
 }
@@ -303,7 +303,7 @@ code {
 pre > code {
     display: block;
     white-space: pre;
-    line-height: 2;
+    /* line-height: 2; */
     padding: 0;
     margin: 0;
 }
@@ -1468,6 +1468,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .s-header img {
     margin-top: 0;
+}
+
+code * {
+    line-height: normal;
 }
 
 .s-header.offset {

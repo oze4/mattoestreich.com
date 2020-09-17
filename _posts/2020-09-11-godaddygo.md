@@ -1,17 +1,19 @@
 ---
-layout: post
+layout: article
 title:  "My Latest Adventure, godaddygo"
 date:   2020-09-11
 description: "A Golang SDK for GoDaddy API"
+headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/golang.jpg
+headerImageHeight: 110%
+headerImageWidth: 190%
 categories: golang sdk godaddy godaddygo
 ---
 
 I have been learning `Go` for a couple of weeks now, this is what I built while learning the language!
 
-## [godaddygo](https://github.com/oze4/godaddygo)
+*[Credit to /u/dgryski for the image above](https://www.reddit.com/r/golang/comments/2ahs7k/gopher_mascot_wallpaper/)*
 
-<img class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/golang.jpg" alt="golang">
-[Credit to /u/dgryski](https://www.reddit.com/r/golang/comments/2ahs7k/gopher_mascot_wallpaper/)
+## [godaddygo](https://github.com/oze4/godaddygo)
 
 After getting laid off I decided to spend some time learning new things, as to better myself and my career. About a year ago or so, I fiddled with Kubernetes on DigitalOcean - this was, of course, after failing to run it on some hardware I had laying around. The support for bare-metal load balancers wasn't like it is today (or I just wasn't as competent).
 
