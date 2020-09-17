@@ -1,5 +1,5 @@
 ---
-layout: post2
+layout: article
 title:  "Post Testing Please Ignore"
 date:   1920-01-01
 description: "testing something you can ignore this"

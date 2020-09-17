@@ -9,7 +9,7 @@
 >
   <!--<!
   [endif]--><head>
-    {%- include post-head.html -%}
+    {%- include post/head.html -%}
   </head>
 
   <body id="top" class="pace-done">
@@ -24,13 +24,15 @@
     ================================================== -->
     <header class="s-header">
       <div class="header-logo">
-        <a class="site-logo" href="{{ "/" | relative_url}}"><img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}"></a>
+        <a class="site-logo" href="{{ "/" | relative_url}}">
+          <img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}">
+        </a>
       </div>
-      {%- include post-header-nav.html -%}
+      {%- include post/header/nav.html -%}
     </header>
     <!-- end s-header -->
 
-    {%- include post-header.html -%}
+    {%- include post/header/index.html -%}
 
     <article class="blog-single">
       {{ content }}
@@ -39,15 +41,15 @@
 
     <!-- footer
     ================================================== -->
-    {%- include post-footer.html -%}
+    {%- include post/footer/index.html -%}
     <!-- end footer -->
 
-    {%- include post-loader.html -%}
+    {%- include post/loader.html -%}
 
     <!-- Java Script
         ================================================== -->
-    <script src="/assets/post2/jquery-3.js"></script>
-    <script src="/assets/post2/plugins.js"></script>
-    <script src="/assets/post2/main.js"></script>
+    <script src="/assets/post/jquery-3.js"></script>
+    <script src="/assets/post/plugins.js"></script>
+    <script src="/assets/post/main.js"></script>
   </body>
 </html>

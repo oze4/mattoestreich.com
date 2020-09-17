@@ -58,8 +58,8 @@
  *
  * ------------------------------------------------------------------- */
 
-/* @import url("/assets/post2/iconmonstr-iconic-font.min.css"); */
-/* @import url("/assets/post2/fonts.css"); */
+/* @import url("/assets/post/iconmonstr-iconic-font.min.css"); */
+/* @import url("/assets/post/fonts.css"); */
 
 
 
@@ -1466,6 +1466,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     z-index: 500;
 }
 
+.s-header img {
+    margin-top: 0;
+}
+
 .s-header.offset {
     -webkit-transform: translate3d(0, -100%, 0);
     -ms-transform: translate3d(0, -100%, 0);
@@ -1490,7 +1494,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .s-header.sticky .header-logo a {
-    margin: 0;
+    /* margin: 0; */
 }
 
 .s-header.sticky .header-nav-wrap {
@@ -1526,7 +1530,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding: 0;
     outline: 0;
     border: none;
-    width: 80px;
+    width: 70px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -3323,7 +3327,7 @@ footer a:hover, footer a:focus {
 
 .footer-site-logo {
     display: block;
-    width: 130px;
+    width: 90px;
 }
 
 .footer-social {
@@ -3465,7 +3469,7 @@ footer a:hover, footer a:focus {
 
 @media only screen and (max-width: 400px) {
     .footer-site-logo {
-        width: 100px;
+        width: 60px;
     }
     .footer-social li {
         margin-right: 1.2rem;
