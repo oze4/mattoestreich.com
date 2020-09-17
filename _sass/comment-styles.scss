@@ -10,6 +10,11 @@ $small-font-size: 12px !default;
 $grey-color: gray !default;
 $grey-color-light: lightgray !default;
 $text-color: black !default;
+$linkColor: #0a59b0;
+$mobileW: 768px;
+$smallMobileW: 480px;
+$bigScreenW: 1600px;
+$leftWidth: 220px;
 
 //
 // Staticman new comment form
@@ -34,14 +39,14 @@ fieldset {
 
 // each staticman text field is wrapped in this div
 .textfield {
-    max-width: 100%;
+    width: 100%;
     padding: 0.5rem 0;
 }
 
 // fields except the comment field get this class too
 // to keep them a reasonable size
 .narrowfield {
-    width: 420px;
+    width: 100%;
 }
 
 .hp {
