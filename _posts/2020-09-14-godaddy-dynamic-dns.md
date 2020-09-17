@@ -4,7 +4,6 @@ title:  "Homegrown Dynamic DNS for GoDaddy"
 description: "this container helps make you flexible"
 date:   2020-09-14
 headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/hummingbird.jpg
-headerImageHeight: 80%
 categories: kubernetes godaddygo dynamic-dns dns godaddy
 ---
 
