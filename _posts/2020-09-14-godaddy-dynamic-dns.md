@@ -19,7 +19,6 @@ In order to properly create this "microservice", or dynamic DNS client, I knew I
 
 <div style="text-align:center;">
 <img title="godaddy" style="max-width:5rem;" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy.jpeg" alt="godaddy">
-<p><small>godaddy</small></p>
 </div>
 
 We pull your current public IP from [https://icanhazip.com](https://icanhazip.com) and match that to a `BASELINE_RECORD` that you will need to create within your zone. We use the `BASELINE_RECORD` as a database of sorts, it is the record we use to compare with what `icanhazip.com` reports. This is how we know your public IP has changed.
@@ -51,7 +50,6 @@ You can either build the container yourself or use the one [on my Docker Hub](ht
 
 <div style="text-align:center;">
 <img style="max-height:20rem;" class="modal-image" src="https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/godaddy-dynamic-dns-cronjob-running.png" alt="godaddy-dynamic-dns container running">
-<p style="margin:0;">cronjob running</p>
 </div>
 
 Hopefully, this can be of use to someone!
