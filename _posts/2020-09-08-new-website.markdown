@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article
 title:  "My New Website!"
 date:   2020-09-08
 description: "Scrapped React for Jekyll"
