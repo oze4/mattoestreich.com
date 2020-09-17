@@ -5,9 +5,9 @@
 
 @import "comment-styles";
 
-{% if site.plainwhite.search %}
+{%- if site.plainwhite.search -%}
   @import "search";
-{% endif %}
+{%- endif -%}
 
 {%- if site.plainwhite.dark_mode -%}
   @import "toggle";

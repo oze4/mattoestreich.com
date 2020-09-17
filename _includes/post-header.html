@@ -1,0 +1,41 @@
+{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
+<!-- page header/blog hero ================================================== -->
+{% if page.headerImage %}
+<div>
+<div class="page-header page-header--single page-hero" style="background-image: url({{ page.headerImage }});background-size: 
+{% if page.headerImageHeight %} {{ page.headerImageHeight }}
+{% else %} 100%
+{% endif %}
+{% if page.headerImageWidth %} {{ page.headerImageWidth }};" >
+{% else %} 100%;" >
+{% endif %}
+{% else %}
+<div class="page-header page-header--single page-hero"></div>
+{% endif %}
+  <div class="row page-header__content narrow">
+    <article class="col-full">
+      <div class="page-header__info">
+        <!--<div class="page-header__cat">-->
+        <div class="post-categories">
+          {%- if page.categories.size > 0 -%} {%- for tag in page.categories -%}
+          <a>{{ tag }}</a>
+          {%- endfor -%} {%- endif -%}
+        </div>
+      </div>
+      <h1 class="page-header__title">
+        <a href="#0" title=""> {{ page.title | escape }} </a>
+      </h1>
+      <p class="page-header__cat" style="cursor: default;">
+        {{ page.description | escape }}
+      </p>
+      <ul class="page-header__meta">
+        <li class="date">{{ page.date | date: date_format }}</li>
+        <li class="author">By <span>{{ site.author | escape }}</span></li>
+      </ul>
+    </article>
+  </div>
+</div>
+{% if page.headerImage %}
+<div>
+{% endif %}
+<!-- end page-header -->

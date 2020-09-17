@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+html,
+body, 
+* {
+  font-family: 'Ropa Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h01, .h02, .h03, .h04, .h05, .h06 {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
+
+blockquote p {
+  font-family: 'Ropa Sans', sans-serif !important;
+}
+
+.post-categories a {
+  cursor: pointer !important;
+	font-size: 14px;
+	background-color: #e3e3e3;
+	padding: 5px 20px;
+	border-radius: 2px;
+	margin-right: 10px;
+}

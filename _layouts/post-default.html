@@ -26,15 +26,15 @@
       <div class="header-logo">
         <a class="site-logo" href="{{ "/" | relative_url}}"><img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}"></a>
       </div>
-
-      {%- include post-header-nav.html -#}
-
-      <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+      {%- include post-header-nav.html -%}
     </header>
     <!-- end s-header -->
 
+    {%- include post-header.html -%}
+
     <article class="blog-single">
       {{ content }}
+      {%- include comments.html -%}
     </article>
 
     <!-- footer

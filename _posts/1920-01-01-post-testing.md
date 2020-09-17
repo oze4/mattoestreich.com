@@ -3,8 +3,10 @@ layout: post2
 title:  "Post Testing Please Ignore"
 date:   1920-01-01
 description: "testing something you can ignore this"
+headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/kubernetes.png
+headerImageHeight: 80%
+headerImageWidth: auto
 categories: kubernetes microservice golang
-comments: true
 ---
 
 Solution commonly found online only fixes half of the issue.
