@@ -4,7 +4,7 @@ title:  "Writing REST API Client in Go"
 description: "saving this excellent article"
 date:   2020-09-21
 headerImage: https://raw.githubusercontent.com/oze4/mattoestreich.com/master/assets/restapi.png
-categories: rest api how-to
+categories: rest api golang how-to
 ---
 
 Excellent article
