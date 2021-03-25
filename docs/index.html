@@ -2,5 +2,10 @@
   <meta http-equiv="refresh" content="0; URL=https://old.mattoestreich.com/" />
 </head>
 <body>
-  <p>If you can see this, <a href="https://old.mattoestreich.com/">click here</a>.</p>
+  <div id="root"></div>
+  <script>
+    setTimeout(() => {
+      document.querySelector("#root").innerHTML = '<p>If you can see this, <a href="https://old.mattoestreich.com/">click here</a>.</p>'
+    }, 5000);
+  </script>
 </body>
